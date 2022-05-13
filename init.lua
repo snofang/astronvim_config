@@ -41,7 +41,6 @@ local config = {
     init = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
-
       -- You can also add new plugins here as well:
       -- { "andweeb/presence.nvim" },
       -- {
@@ -51,13 +50,14 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+
     },
     -- All other entries override the setup() call for default plugins
     treesitter = {
-      ensure_installed = { "lua" },
+      ensure_installed = { "lua", "elixir" },
     },
     ["nvim-lsp-installer"] = {
-      ensure_installed = { "sumneko_lua" },
+      ensure_installed = { "sumneko_lua", "elixirls" },
     },
     packer = {
       compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
