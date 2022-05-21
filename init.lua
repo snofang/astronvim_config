@@ -2,11 +2,6 @@ local config = {
 
   colorscheme = "tokyonight",
 
-  options = {
-    g = {
-      tokyonight_style = "night",
-    }
-  },
   -- Configure plugins
   plugins = {
     -- Add plugins, the parcker syntax without the "use"
@@ -39,6 +34,14 @@ local config = {
       ensure_installed = { "sumneko_lua", "elixirls" },
     },
   },
+
+  -- options = {
+  --   g = {
+  --     tokyonight_style = "night",
+  --   }
+  -- },
 }
+
+vim.g.tokyonight_style = "night"
 
 return config
