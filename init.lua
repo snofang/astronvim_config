@@ -2,6 +2,11 @@ local config = {
 
   colorscheme = "tokyonight",
 
+  options = {
+    g = {
+      tokyonight_style = "night",
+    }
+  },
   -- Configure plugins
   plugins = {
     -- Add plugins, the parcker syntax without the "use"
@@ -19,13 +24,6 @@ local config = {
       -- },
         {
           "folke/tokyonight.nvim",
-          config = function ()
-            require('lualine').setup{
-              options = {
-                theme = 'tokyonight'
-              }
-            }
-          end
         },
       -- {
       --   "navarasu/onedark.nvim",
@@ -43,5 +41,4 @@ local config = {
   },
 }
 
-vim.g.tokyonight_style = "night"
 return config
