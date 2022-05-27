@@ -1,6 +1,6 @@
 local config = {
 
-  colorscheme = "tokyonight",
+  -- colorscheme = "tokyonight",
 
   -- Configure plugins
   plugins = {
@@ -17,9 +17,9 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-        {
-          "folke/tokyonight.nvim",
-        },
+        -- {
+        --   "folke/tokyonight.nvim",
+        -- },
       -- {
       --   "navarasu/onedark.nvim",
       --   config = require("onedark").load()
@@ -27,12 +27,12 @@ local config = {
 
     },
     -- All other entries override the setup() call for default plugins
-    treesitter = {
-      ensure_installed = { "lua", "elixir" },
-    },
-    ["nvim-lsp-installer"] = {
-      ensure_installed = { "sumneko_lua", "elixirls" },
-    },
+    -- treesitter = {
+    --   ensure_installed = { "lua", "elixir" },
+    -- },
+    -- ["nvim-lsp-installer"] = {
+    --   ensure_installed = { "sumneko_lua", "elixirls" },
+    -- },
   },
 
   -- options = {
@@ -42,6 +42,6 @@ local config = {
   -- },
 }
 
-vim.g.tokyonight_style = "night"
+-- vim.g.tokyonight_style = "night"
 vim.api.nvim_command("set clipboard+=unnamedplus")
 return config

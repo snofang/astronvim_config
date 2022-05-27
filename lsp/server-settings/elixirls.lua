@@ -1,0 +1,6 @@
+-- require'lspconfig'.elixirls.setup{
+--   cmd = {"~/.elixir-ls/release/language_server.sh"};
+-- }
+-- return {
+--   cmd = {"~/.elixir-ls/release/language_server.sh"},
+-- }
