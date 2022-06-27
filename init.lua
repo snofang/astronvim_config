@@ -1,3 +1,5 @@
+local util = require 'lspconfig/util'
+
 local config = {
 
   plugins = {
@@ -85,28 +87,21 @@ local config = {
       },
     },
 
-    -- to change the default configuration of the elixirls; all of these failed to work :~
-    -- lsp = {
-    --   -- override the lsp installer server-registration function
-    --   server_registration = function(server, opts)
-    --     if server == "elixirls" then
-    --       require("lspconfig")[server].setup({
-    --         cmd = {"~/.elixir-ls/release/language_server.sh"}
-    --       })
-    --     end
-    --   end,
-    --
-    --   ["server-settings"] = {
-    --     elixirls = {
-    --       settings = {
-    --         cmd = {"~/.elixir-ls/release/language_server.sh"},
-    --       },
-    --       setup = {
-    --         cmd = {"~/.elixir-ls/release/language_server.sh"},
-    --       }
-    --     }
-    --   }
+  },
+
+  -- to change the default configuration of the elixirls; all of these failed to work :~
+  lsp = {
+    -- servers = {
+    --   "elixirls",
     -- },
+    ["server-settings"] = {
+      elixirls = {
+          -- cmd = {"~/.elixir-ls/release/language_server.sh"},
+          root_dir = function(fname)
+              return util.root_pattern(".git")(fname)
+          end,
+      }
+    }
   },
 
   polish = function ()
