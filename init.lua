@@ -72,6 +72,8 @@ local config = {
         "vim",
         "yaml",
         "elixir",
+        "eex",
+        "heex",
       },
     },
 
@@ -98,8 +100,19 @@ local config = {
       elixirls = {
           -- cmd = {"~/.elixir-ls/release/language_server.sh"},
           root_dir = function(fname)
-              return util.root_pattern(".git")(fname)
+              return os.getenv("PWD")--util.root_pattern(".git")(fname)
           end,
+          suggestSpecs = false,
+          dialyzerEnabled = true,
+          signatureAfterComplete = false,
+          fetchDeps = false,
+          capabilities = {
+            document_formatting = true
+          }
+          -- on_attach = function(client)
+          --   client.server_capabilities.document_formatting = true
+          --   on_attach(client)
+          -- end,
       }
     }
   },
