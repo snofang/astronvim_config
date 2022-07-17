@@ -14,6 +14,25 @@ local config = {
         --   map("n", "<leader>fr", "<cmd>lua require('spectre').open()<CR>", { desc = "open find & replace" })
         -- end,
       },
+      {"mhinz/vim-mix-format"},
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require('null-ls').setup(
+            {
+              sources = {
+                -- require("null-ls").builtins.formatting.stylua,
+                require("null-ls").builtins.diagnostics.eslint,
+                require("null-ls").builtins.diagnostics.credo,
+                require("null-ls").builtins.formatting.mix,
+                require("null-ls").builtins.formatting.surface,
+                require("null-ls").builtins.formatting.eslint,
+                require("null-ls").builtins.code_actions.eslint,
+              }
+            }
+          )
+        end
+      },
     },
 
     -- overriding setup() of existing plugins
