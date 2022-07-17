@@ -15,24 +15,6 @@ local config = {
         -- end,
       },
       {"mhinz/vim-mix-format"},
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require('null-ls').setup(
-            {
-              sources = {
-                -- require("null-ls").builtins.formatting.stylua,
-                require("null-ls").builtins.diagnostics.eslint,
-                require("null-ls").builtins.diagnostics.credo,
-                require("null-ls").builtins.formatting.mix,
-                require("null-ls").builtins.formatting.surface,
-                require("null-ls").builtins.formatting.eslint,
-                require("null-ls").builtins.code_actions.eslint,
-              }
-            }
-          )
-        end
-      },
     },
 
     -- overriding setup() of existing plugins
@@ -107,6 +89,29 @@ local config = {
         "sqlls",
       },
     },
+
+
+
+    ["null-ls"] = function(config)
+      local null_ls = require "null-ls"
+      config.sources = {
+        null_ls.builtins.diagnostics.credo,
+        null_ls.builtins.formatting.mix,
+        null_ls.builtins.formatting.surface,
+      }
+      -- set up null-ls's on_attach function
+      -- config.on_attach = function(client)
+      --   -- NOTE: You can remove this on attach function to disable format on save
+      --   if client.resolved_capabilities.document_formatting then
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       desc = "Auto format before save",
+      --       pattern = "<buffer>",
+      --       callback = vim.lsp.buf.formatting_sync,
+      --     })
+      --   end
+      -- end
+      return config -- return final config table
+    end,
 
   },
 
