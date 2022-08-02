@@ -5,6 +5,7 @@ local config = {
   plugins = {
     -- installing plugins
     init = {
+      ["windwp/nvim-autopairs"] = { disable = true },
       {"folke/tokyonight.nvim"}, -- theme
       {
         "windwp/nvim-spectre",
@@ -95,7 +96,7 @@ local config = {
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       config.sources = {
-        null_ls.builtins.diagnostics.credo,
+        -- null_ls.builtins.diagnostics.credo,
         null_ls.builtins.formatting.mix,
         null_ls.builtins.formatting.surface,
       }
