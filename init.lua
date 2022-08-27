@@ -76,6 +76,7 @@ local config = {
         "elixir",
         "eex",
         "heex",
+        "erlang"
       },
     },
 
@@ -88,6 +89,7 @@ local config = {
         "ltex", --Latex/Markdown
         "yamlls",
         "sqlls",
+        "erlangls"
       },
     },
 
