@@ -28,7 +28,7 @@ local config = {
         config.mapping["<Tab>"] = cmp.mapping(function(fallback)
           if luasnip.expandable() then
             luasnip.expand()
-          elseif luasnip.expand_or_jumpable() then
+          elseif luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
           else
             fallback()
