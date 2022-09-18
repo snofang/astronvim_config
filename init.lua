@@ -1,4 +1,4 @@
-local util = require 'lspconfig/util'
+local path_to_elixirls_server = vim.fn.expand("~/.elixir_ls/release/language_server.sh")
 
 local config = {
 
@@ -80,19 +80,20 @@ local config = {
       },
     },
 
-    ["nvim-lsp-installer"] = {
-      automatic_installation = true,
+    ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
       ensure_installed = {
         "sumneko_lua",
-        "elixirls",
+        -- "elixirls",
         "jsonls",
         "ltex", --Latex/Markdown
         "yamlls",
         "sqlls",
-        "erlangls"
+        "erlangls",
+        "html",
+        "tailwindcss",
       },
+      automatic_installation = false,
     },
-
 
 
     ["null-ls"] = function(config)
@@ -120,13 +121,13 @@ local config = {
 
   -- to change the default configuration of the elixirls; all of these failed to work :~
   lsp = {
-    -- servers = {
-    --   "elixirls",
-    -- },
+    servers = {
+      "elixirls",
+    },
     ["server-settings"] = {
       elixirls = {
-          -- cmd = {"~/.elixir-ls/release/language_server.sh"},
-          root_dir = function(fname)
+          cmd = {path_to_elixirls_server},
+          root_dir = function()
               return os.getenv("PWD")--util.root_pattern(".git")(fname)
           end,
           suggestSpecs = false,
@@ -140,6 +141,9 @@ local config = {
           --   client.server_capabilities.document_formatting = true
           --   on_attach(client)
           -- end,
+      },
+      html = {
+        filetypes =  {"heex", "html", "eelixir"}
       }
     }
   },
