@@ -1,50 +1,17 @@
-local path_to_elixirls_server = vim.fn.expand("~/.elixir_ls/release/language_server.sh")
-
 local config = {
-
+  colorscheme = "tokyonight",
   plugins = {
     -- installing plugins
-    init = {
-      ["windwp/nvim-autopairs"] = { disable = true },
-      { "folke/tokyonight.nvim" }, -- theme
-      {
-        "windwp/nvim-spectre",
-        requires = { "nvim-lua/plenary.nvim" }, -- search & replace
-        -- config = function ()
-        --   local map = vim.api.nvim_set_keymap
-        --   map("n", "<leader>fr", "<cmd>lua require('spectre').open()<CR>", { desc = "open find & replace" })
-        -- end,
-      },
-      { "mhinz/vim-mix-format" },
+    { "windwp/nvim-autopairs", enabled = false },
+    {
+      "windwp/nvim-spectre",
+      requires = { "nvim-lua/plenary.nvim" }, -- search & replace
+      -- config = function ()
+      --   local map = vim.api.nvim_set_keymap
+      --   map("n", "<leader>fr", "<cmd>lua require('spectre').open()<CR>", { desc = "open find & replace" })
+      -- end,
     },
-
-    -- overriding setup() of existing plugins
-    cmp = function(config)
-      local cmp_ok, cmp = pcall(require, "cmp")
-      local luasnip_ok, luasnip = pcall(require, "luasnip")
-      if cmp_ok and luasnip_ok then
-        config.mapping["<CR>"] = cmp.mapping.confirm({ select = false })
-        config.mapping["<C-y>"] = cmp.mapping.confirm { select = true, behavior = cmp.ConfirmBehavior.Insert }
-        config.mapping["<Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.expandable() then
-            luasnip.expand()
-          elseif luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { "i", "s" })
-        config.mapping["<S-Tab>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" })
-      end
-      return config
-    end,
-
+    { "mhinz/vim-mix-format" },
     ["neo-tree"] = {
       close_if_last_window = true,
       enable_diagnostics = true,
@@ -53,49 +20,6 @@ local config = {
         width = 35,
       },
     },
-
-    treesitter = {
-      ensure_installed = {
-        "bash",
-        "c",
-        "cmake",
-        "comment",
-        "cpp",
-        "css",
-        "dockerfile",
-        "html",
-        "http",
-        "javascript",
-        "json",
-        -- "latex",
-        "lua",
-        -- "markdown",
-        "regex",
-        "vim",
-        "yaml",
-        "elixir",
-        "eex",
-        "heex",
-        "erlang"
-      },
-    },
-
-    ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-      ensure_installed = {
-        "sumneko_lua",
-        -- "elixirls",
-        "jsonls",
-        -- "ltex", --Latex/Markdown
-        "yamlls",
-        "sqlls",
-        "erlangls",
-        "html",
-        "tailwindcss",
-      },
-      automatic_installation = false,
-    },
-
-
     -- ["null-ls"] = function(config)
     --   local null_ls = require "null-ls"
     --   config.sources = {
@@ -118,43 +42,7 @@ local config = {
     -- end,
 
   },
-
-  -- to change the default configuration of the elixirls; all of these failed to work :~
-  lsp = {
-    formatting = {
-      format_on_save = false,
-    },
-    servers = {
-      "elixirls",
-    },
-    ["server-settings"] = {
-      elixirls = {
-        cmd = { path_to_elixirls_server },
-        root_dir = function()
-          return os.getenv("PWD") --util.root_pattern(".git")(fname)
-        end,
-        suggestSpecs = false,
-        dialyzerEnabled = true,
-        signatureAfterComplete = false,
-        fetchDeps = false,
-        capabilities = {
-          document_formatting = true
-        }
-        -- on_attach = function(client)
-        --   client.server_capabilities.document_formatting = true
-        --   on_attach(client)
-        -- end,
-      },
-      html = {
-        filetypes = { "heex", "html", "eelixir" }
-      }
-    }
-  },
-
   polish = function()
-    -- theme
-    vim.g.tokyonight_style = "storm" --"night"
-    vim.api.nvim_command(("colorscheme %s"):format("tokyonight"))
 
     --clipboard
     vim.api.nvim_command("set clipboard+=unnamedplus")
