@@ -6,7 +6,7 @@ return {
       automatic_installation = true,
       ensure_installed = {
         "lua_ls",
-        "elixirls",
+        -- "elixirls",
         "jsonls",
         -- "ltex", --Latex/Markdown
         "yamlls",

@@ -1,8 +1,5 @@
 -- Note: to write to system clipboard  
 -- sudo apt install wl-clipboard
-
--- local path_to_elixirls_server = vim.fn.expand("~/.elixir_ls/release/language_server.sh")
-
 local config = {
   colorscheme = "tokyonight",
   plugins = {
