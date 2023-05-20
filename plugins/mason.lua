@@ -13,7 +13,9 @@ return {
         "sqlls",
         "erlangls",
         "html",
-        "bashls"
+        "bashls",
+        "tsserver"
+        -- "quick_lint_js"
         -- "tailwindcss",
       },
     },
