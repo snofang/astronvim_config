@@ -14,7 +14,8 @@ return {
         "erlangls",
         "html",
         "bashls",
-        "tsserver"
+        "tsserver",
+        "ansiblels"
         -- "quick_lint_js"
         -- "tailwindcss",
       },

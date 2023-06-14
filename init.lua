@@ -5,14 +5,6 @@ local config = {
   plugins = {
     -- installing plugins
     { "windwp/nvim-autopairs", enabled = false },
-    {
-      "windwp/nvim-spectre",
-      requires = { "nvim-lua/plenary.nvim" }, -- search & replace
-      -- config = function ()
-      --   local map = vim.api.nvim_set_keymap
-      --   map("n", "<leader>fr", "<cmd>lua require('spectre').open()<CR>", { desc = "open find & replace" })
-      -- end,
-    },
     { "mhinz/vim-mix-format" },
     ["neo-tree"] = {
       close_if_last_window = true,
@@ -50,7 +42,7 @@ local config = {
     vim.api.nvim_command("set clipboard+=unnamedplus")
 
     local map = vim.api.nvim_set_keymap
-    map("n", "<leader>fr", "<cmd>lua require('spectre').open()<CR>", { desc = "open find & replace" })
+    map("n", "<leader>fR", "<cmd>lua require('spectre').open()<CR>", { desc = "open find & replace" })
     map("n", "<leader>fa", ":Telescope find_files hidden=true no_ignore=true<cr>", { desc = "Search hidden files" })
   end
 }
