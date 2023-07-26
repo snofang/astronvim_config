@@ -15,9 +15,9 @@ return {
         "html",
         "bashls",
         "tsserver",
-        "ansiblels"
+        "ansiblels",
         -- "quick_lint_js"
-        -- "tailwindcss",
+        "tailwindcss"
       },
     },
   },

@@ -1,5 +1,8 @@
 return {
   "hrsh7th/nvim-cmp",
+  dependencies = {
+    { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+  },
   -- override the options table that is used in the `require("cmp").setup()` call
   opts = function(_, config)
     -- opts parameter is the default options table
@@ -25,6 +28,14 @@ return {
         fallback()
       end
     end, { "i", "s" })
+
+
+    -- formatting
+    local format_kinds = config.formatting.format
+    config.formatting.format = function(entry, item)
+      format_kinds(entry, item)
+      return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+    end
 
     -- return the new table to be used
     return config
