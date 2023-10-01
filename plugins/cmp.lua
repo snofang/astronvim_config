@@ -12,7 +12,8 @@ return {
 
     config.mapping["<CR>"] = cmp.mapping.confirm({ select = false })
     config.mapping["<C-y>"] = cmp.mapping.confirm { select = true, behavior = cmp.ConfirmBehavior.Insert }
-    config.mapping["<Tab>"] = cmp.mapping(function(fallback)
+    config.mapping["<Tab>"] = nil
+    config.mapping["<C-f>"] = cmp.mapping(function(fallback)
       if luasnip.expandable() then
         luasnip.expand()
       elseif luasnip.expand_or_locally_jumpable() then

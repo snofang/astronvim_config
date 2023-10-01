@@ -1,7 +1,7 @@
 return {
   "folke/tokyonight.nvim",
-  -- lazy = false,
-  -- priority = 1000,
+  lazy = false,
+  priority = 1000,
   opts = {
     style = "night",                     -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
     -- transparent = vim.g.neovide == nil, -- Enable this to disable setting the background color
