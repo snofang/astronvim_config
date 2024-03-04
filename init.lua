@@ -38,6 +38,7 @@ local config = {
   },
   polish = function()
 
+    -- vim.lsp.set_log_level("debug")
     --clipboard
     vim.api.nvim_command("set clipboard+=unnamedplus")
 
